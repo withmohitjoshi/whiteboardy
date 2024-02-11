@@ -1,0 +1,11 @@
+// all the variables will be here (generic)
+@import "./variables/index.scss";
+
+// all the fn will be here (generic)
+@import "./functions/index.scss";
+
+// all the mixins will be here (generic)
+@import "./mixins/index.scss";
+
+// generate classes
+@import "./generateClasses/index.scss";

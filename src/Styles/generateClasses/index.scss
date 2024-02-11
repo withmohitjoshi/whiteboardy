@@ -1,0 +1,48 @@
+// this will generate display classes
+@include baseClassGenerator("display", ".d", $display);
+
+// this will generate positions classes
+@include baseClassGenerator("position", ".pos", $positions);
+
+// this will generate align-items,self,content classes
+@include baseClassGenerator("align-items", ".align-items", $align-items);
+@include baseClassGenerator("align-self", ".align-self", $align-self);
+@include baseClassGenerator("align-content", ".align-content", $align-content);
+
+// this will generate content-items,self,content classes
+@include baseClassGenerator("justify-items", ".justify-items", $justify-items);
+@include baseClassGenerator("justify-self", ".justify-self", $justify-self);
+@include baseClassGenerator(
+  "justify-content",
+  ".justify-content",
+  $justify-content
+);
+
+// this will generate gap,column-gap,row-gap classes
+@include baseClassGenerator("gap", ".gap", $spacings);
+@include baseClassGenerator("column-gap", ".col-gap", $spacings);
+@include baseClassGenerator("row-gap", ".row-gap", $spacings);
+
+// this will generate opacity classes
+@include baseClassGenerator("opacity", ".opacity", $opacities);
+
+// this will generate line-height classes
+@include baseClassGenerator("line-height", ".lh", $line-heights);
+
+// this will generate font-weights classes
+@include baseClassGenerator("font-weight", ".fw", $font-weights);
+
+// this will generate font-weights classes
+@include baseClassGenerator("font-size", ".fs", $font-sizes);
+
+// this will generate padding, margin classes
+
+// this will generate text color classes
+@include colorClassesGenerator("color", ".text", $colors);
+
+// this will generate background color classes
+@include colorClassesGenerator("background-color", ".bg", $colors);
+
+// this will generate padding,maring classes
+@include utilityClassesGenerator("padding", ".p", $spacings, $directions);
+@include utilityClassesGenerator("margin", ".m", $spacings, $directions);

@@ -1,0 +1,122 @@
+$primary: #ffcf96;
+$secondary: #ff8080;
+$info: #525ceb;
+$error: #ff004d;
+$success: #00cc66;
+
+$colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "info": $info,
+  "error": $error,
+  "success": $success,
+  "red": #ff0000,
+  "gray": #808080,
+  "pink": #ffc0cb,
+  "blue": #0000ff,
+  "green": #008000,
+  "white": white,
+  "black": black,
+);
+
+$positions: ("static", "relative", "absolute", "fixed", "sticky");
+
+$directions: (
+  "default": "default",
+  "l": "left",
+  "r": "right",
+  "t": "top",
+  "b": "bottom",
+  "x": "x",
+  "y": "y",
+);
+
+$display: ("block", "inline", "inline-block", "flex", "grid", "none");
+
+$align-items: ("stretch", "center", "start", "end", "baseline");
+
+$justify-items: ("stretch", "center", "start", "end", "baseline");
+
+$align-self: ("stretch", "center", "start", "end", "baseline");
+
+$justify-self: ("stretch", "center", "start", "end", "baseline");
+
+$align-content: (
+  "center",
+  "start",
+  "end",
+  "space-between",
+  "space-around",
+  "space-evenly"
+);
+
+$justify-content: (
+  "center",
+  "start",
+  "end",
+  "space-between",
+  "space-around",
+  "space-evenly"
+);
+
+$breakpoints: (
+  "zero": 0px,
+  "xs": 320px,
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+  "2xl": 1400px,
+  "3xl": 1600px,
+);
+
+$spacings: (
+  "none": 0,
+  "xxs": 0.25rem,
+  "xs": 0.5rem,
+  "sm": 1rem,
+  "md": 1.5rem,
+  "lg": 2rem,
+  "xl": 2.5rem,
+  "2xl": 3rem,
+  "3xl": 4rem,
+);
+
+$opacities: (
+  "sm": 0,
+  "md": 0.5,
+  "full": 1,
+);
+
+$line-heights: (
+  "none": 0,
+  "sm": 1.2,
+  "md": 1.5,
+  "lg": 1.8,
+);
+
+$font-weights: (
+  "100",
+  "200",
+  "300",
+  "400",
+  "500",
+  "600",
+  "700",
+  "800",
+  "900",
+  "bold",
+  "bolder",
+  "normal",
+  "lighter"
+);
+
+$font-sizes: (
+  "none": 0,
+  "xs": 0.75rem,
+  "sm": 0.875rem,
+  "md": 1rem,
+  "lg": 1.12rem,
+  "xl": 1.5rem,
+  "2xl": 2rem,
+);
