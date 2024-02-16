@@ -3,21 +3,36 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    font-family: "Courier New", Courier, monospace;
-    @apply font-mono;
-  }
   input {
     @apply outline-none border-none;
+  }
+  canvas {
+    @apply w-full h-full card-like p-0 border-none;
+  }
+}
+
+@layer components {
+  .card-like {
+    @apply px-4 py-2 bg-white shadow-lg rounded-lg;
   }
 }
 
 #app {
-  @apply bg-teal-200 w-full min-h-screen p-4;
+  @apply w-full min-h-screen p-4 bg-slate-200;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap");
+#header {
+  @apply w-full card-like;
+}
 
-#brand {
-  font-family: "Protest Riot", sans-serif;
+#main {
+  @apply flex gap-4 min-h-full;
+}
+
+#sidebar {
+  @apply w-full min-h-full card-like;
+}
+
+.canvas-container {
+  @apply w-full min-h-full;
 }
