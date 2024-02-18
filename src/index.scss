@@ -21,6 +21,12 @@
 
 #header {
   @apply w-full p-2 bg-transparent;
+  &>#brand {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    @apply capitalize text-gray-700 text-2xl font-semibold;
+  }
 }
 
 #main {
@@ -29,7 +35,10 @@
 }
 
 #sidebar {
-  @apply w-full p-2 bg-transparent;
+  @apply p-2 bg-transparent flex flex-col gap-6 text-gray-600;
+  & > span {
+    @apply cursor-pointer ;
+  }
 }
 
 .canvas-container {
