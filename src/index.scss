@@ -9,19 +9,22 @@
   input {
     @apply outline-none border-none;
   }
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
   canvas {
     @apply p-0 border-none;
   }
 }
 
 #app {
-  @apply w-full h-screen p-4
-  flex flex-col gap-4;
+  @apply w-full h-screen p-4 flex flex-col gap-2;
 }
 
 #header {
-  @apply w-full p-2 bg-transparent;
-  &>#brand {
+  @apply w-full p-2 bg-transparent flex gap-6 items-center;
+  & > #brand {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -37,10 +40,10 @@
 #sidebar {
   @apply p-2 bg-transparent flex flex-col gap-6 text-gray-600;
   & > span {
-    @apply cursor-pointer ;
+    @apply cursor-pointer;
   }
 }
 
 .canvas-container {
-  @apply w-full h-full bg-white rounded-lg shadow-lg;
+  @apply w-full h-full bg-white rounded-2xl shadow-md;
 }

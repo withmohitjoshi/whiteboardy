@@ -46,6 +46,84 @@ const BoardLayerIcon = ({ width = 24, height = 24, ...rest }) => {
     </svg>
   );
 };
+const FirstBoardIcon = ({ width = 24, height = 24, ...rest }) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill={"currentcolor"}
+      xmlns="http://www.w3.org/2000/svg"
+      {...rest}
+    >
+      <path
+        opacity="0.4"
+        d="M20.2409 7.22005V16.7901C20.2409 18.7501 18.111 19.98 16.411 19L12.261 16.61L8.11094 14.21C6.41094 13.23 6.41094 10.78 8.11094 9.80004L12.261 7.40004L16.411 5.01006C18.111 4.03006 20.2409 5.25005 20.2409 7.22005Z"
+        fill="currentcolor"
+      />
+      <path
+        d="M3.75977 18.9298C3.34977 18.9298 3.00977 18.5898 3.00977 18.1798V5.81982C3.00977 5.40982 3.34977 5.06982 3.75977 5.06982C4.16977 5.06982 4.50977 5.40982 4.50977 5.81982V18.1798C4.50977 18.5898 4.16977 18.9298 3.75977 18.9298Z"
+        fill="currentcolor"
+      />
+    </svg>
+  );
+};
+const LastBoardIcon = ({ width = 24, height = 24, ...rest }) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill={"currentcolor"}
+      xmlns="http://www.w3.org/2000/svg"
+      {...rest}
+    >
+      <path
+        opacity="0.4"
+        d="M3.75977 7.22005V16.7901C3.75977 18.7501 5.88975 19.98 7.58975 19L11.7397 16.61L15.8898 14.21C17.5898 13.23 17.5898 10.78 15.8898 9.80004L11.7397 7.40004L7.58975 5.01006C5.88975 4.03006 3.75977 5.25005 3.75977 7.22005Z"
+        fill="currentcolor"
+      />
+      <path
+        d="M20.2402 18.9298C19.8302 18.9298 19.4902 18.5898 19.4902 18.1798V5.81982C19.4902 5.40982 19.8302 5.06982 20.2402 5.06982C20.6502 5.06982 20.9902 5.40982 20.9902 5.81982V18.1798C20.9902 18.5898 20.6602 18.9298 20.2402 18.9298Z"
+        fill="currentcolor"
+      />
+    </svg>
+  );
+};
+const PrevBoardIcon = ({ width = 24, height = 24, ...rest }) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill={"currentcolor"}
+      xmlns="http://www.w3.org/2000/svg"
+      {...rest}
+    >
+      <path
+        d="M13.9783 5.31877L10.7683 8.52877L8.79828 10.4888C7.96828 11.3188 7.96828 12.6688 8.79828 13.4988L13.9783 18.6788C14.6583 19.3588 15.8183 18.8688 15.8183 17.9188V12.3088V6.07877C15.8183 5.11877 14.6583 4.63877 13.9783 5.31877Z"
+        fill="currentcolor"
+      />
+    </svg>
+  );
+};
+const NextBoardIcon = ({ width = 24, height = 24, ...rest }) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill={"currentcolor"}
+      xmlns="http://www.w3.org/2000/svg"
+      {...rest}
+    >
+      <path
+        d="M15.1997 10.4919L13.2297 8.52188L10.0197 5.31188C9.33969 4.64188 8.17969 5.12188 8.17969 6.08188V12.3119V17.9219C8.17969 18.8819 9.33969 19.3619 10.0197 18.6819L15.1997 13.5019C16.0297 12.6819 16.0297 11.3219 15.1997 10.4919Z"
+        fill="currentcolor"
+      />
+    </svg>
+  );
+};
 const ColorSelectIcon = ({ width = 24, height = 24, ...rest }) => {
   return (
     <svg
@@ -301,5 +379,9 @@ export const useIcons = () => {
     UndoIcon,
     RedoIcon,
     PencilIcon,
+    FirstBoardIcon,
+    LastBoardIcon,
+    PrevBoardIcon,
+    NextBoardIcon
   };
 };
