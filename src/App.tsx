@@ -3,7 +3,6 @@ import { Header, Sidebar } from './Components';
 function App() {
   return (
     <div id='app'>
-      <div className='flex flex-col gap-4'>
         <Header />
         <main id='main'>
           <Sidebar />
@@ -12,7 +11,6 @@ function App() {
           </section>
         </main>
       </div>
-    </div>
   );
 }
 export default App;

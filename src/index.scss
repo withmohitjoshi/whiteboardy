@@ -3,36 +3,35 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    @apply bg-slate-200;
+  }
   input {
     @apply outline-none border-none;
   }
   canvas {
-    @apply w-full h-full card-like p-0 border-none;
-  }
-}
-
-@layer components {
-  .card-like {
-    @apply px-4 py-2 bg-white shadow-lg rounded-lg;
+    @apply p-0 border-none;
   }
 }
 
 #app {
-  @apply w-full min-h-screen p-4 bg-slate-200;
+  @apply w-full h-screen p-4
+  flex flex-col gap-4;
 }
 
 #header {
-  @apply w-full card-like;
+  @apply w-full p-2 bg-transparent;
 }
 
 #main {
-  @apply flex gap-4 min-h-full;
+  @apply grid gap-4 h-full;
+  grid-template-columns: min-content 1fr;
 }
 
 #sidebar {
-  @apply w-full min-h-full card-like;
+  @apply w-full p-2 bg-transparent;
 }
 
 .canvas-container {
-  @apply w-full min-h-full;
+  @apply w-full h-full bg-white rounded-lg shadow-lg;
 }
