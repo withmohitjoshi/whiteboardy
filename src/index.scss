@@ -9,8 +9,8 @@
   input {
     @apply outline-none border-none;
   }
-  input[type="number"]::-webkit-outer-spin-button,
-  input[type="number"]::-webkit-inner-spin-button {
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
   canvas {
@@ -19,13 +19,13 @@
 }
 
 #app {
-  @apply w-full h-screen p-4 flex flex-col gap-2;
+  @apply w-full h-dvh p-4 flex flex-col gap-2;
 }
 
 #header {
-  @apply w-full p-2 bg-transparent flex gap-6 items-center;
+  @apply w-full p-2 flex gap-6 items-center;
   & > #brand {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     @apply capitalize text-gray-700 text-2xl font-semibold;
