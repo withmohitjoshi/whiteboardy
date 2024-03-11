@@ -1,6 +1,7 @@
 import { useIcons } from "../../Hooks/useIcons";
+import Canvas from "../Canvas";
 
-const Sidebar = () => {
+const Sidebar = ({ setBoardState,setActiveBoard }: any) => {
   const {
     CursorIcon,
     BoardLayerIcon,
@@ -20,7 +21,13 @@ const Sidebar = () => {
       <span title="Cursor">
         <CursorIcon />
       </span>
-      <span title="New Board">
+      <span
+        title="New Board"
+        onClick={() => {
+          setBoardState((prev: any) => [...prev, Canvas]);
+          // setActiveBoard((prev:any) => prev.length + 1);
+        }}
+      >
         <BoardLayerIcon />
       </span>
       <span title="Select pencil color">
