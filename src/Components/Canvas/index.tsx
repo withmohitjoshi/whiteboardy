@@ -1,6 +1,10 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from 'react';
 
-const Canvas: React.FC = () => {
+type CanvasPropsT = {
+  style: React.CSSProperties;
+};
+
+const Canvas = ({ style }: CanvasPropsT) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const contextRef = useRef<CanvasRenderingContext2D | null>(null);
   let isDrawing = false;
@@ -8,22 +12,20 @@ const Canvas: React.FC = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (canvas) {
-      const ctx = canvas.getContext("2d");
+      const ctx = canvas.getContext('2d');
       if (ctx) {
         contextRef.current = ctx;
       }
-      const canvasContainer = document.querySelector(".canvas-container");
+      const canvasContainer = document.querySelector('.canvas-container');
       if (canvasContainer) {
         canvas.width = canvasContainer?.clientWidth;
         canvas.height = canvasContainer?.clientHeight;
-        canvas.style.borderRadius = "1rem";
+        canvas.style.borderRadius = '1rem';
       }
     }
   }, []);
 
-  const startDrawing = ({
-    nativeEvent,
-  }: React.MouseEvent<HTMLCanvasElement>) => {
+  const startDrawing = ({ nativeEvent }: React.MouseEvent<HTMLCanvasElement>) => {
     const { offsetX, offsetY } = nativeEvent;
     if (contextRef.current) {
       contextRef.current.beginPath();
@@ -54,6 +56,9 @@ const Canvas: React.FC = () => {
       onMouseDown={startDrawing}
       onMouseMove={drawPencil}
       onMouseUp={finishDrawing}
+      style={{
+        ...style,
+      }}
     />
   );
 };

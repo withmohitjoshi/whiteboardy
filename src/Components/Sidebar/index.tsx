@@ -1,13 +1,14 @@
 import { useIcons } from '../../Hooks/useIcons';
+import Canvas from '../Canvas';
 
-const Sidebar = () => {
+const Sidebar = ({ setCanvasArray }: any) => {
   const { CursorIcon, BoardLayerIcon, ColorSelectIcon, BoardColorSelectIcon, RubberIcon, ShapesIcon, TextIcon, ImageIcon, TrashIcon, RedoIcon, UndoIcon, PencilIcon } = useIcons();
   return (
     <aside id='sidebar'>
       <span title='Cursor'>
         <CursorIcon />
       </span>
-      <span title='New Board'>
+      <span title='New Board' onClick={() => setCanvasArray((prev) => [...prev, Canvas])}>
         <BoardLayerIcon />
       </span>
       <span title='Select pencil color'>
