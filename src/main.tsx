@@ -1,5 +1,10 @@
-import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
-import './index.scss';
+import ReactDOM from "react-dom/client";
+import App from "./App.tsx";
+import "./index.scss";
+import CanvasBoardProvider from "./Context/CanvasBoard/index.tsx";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <CanvasBoardProvider>
+    <App />
+  </CanvasBoardProvider>
+);

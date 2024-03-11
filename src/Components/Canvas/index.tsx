@@ -1,8 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-
-type CanvasPropsT = {
-  style: React.CSSProperties;
-};
+import { CanvasPropsT } from '../../Context/CanvasBoard/types';
 
 const Canvas = ({ style }: CanvasPropsT) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
