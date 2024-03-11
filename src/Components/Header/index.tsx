@@ -1,4 +1,4 @@
-import { useIcons } from "../../Hooks/useIcons";
+import { useIcons } from '../../Hooks/useIcons';
 
 export default function Header({
   activeBoard,
@@ -31,6 +31,7 @@ export default function Header({
         <span onClick={handlePrevBoard}>
           <PrevBoardIcon />
         </span>
+<<<<<<< HEAD
         <div className="border-x-[1px] border-gray-300 px-4">
           Board{" "}
           <input
@@ -47,6 +48,10 @@ export default function Header({
             }}
           />{" "}
           of {boardState.length}
+=======
+        <div className='border-x-[1px] border-gray-300 px-4'>
+          Board <input type='number' className='max-w-16 text-center rounded-s-sm' min={1} defaultValue={1} /> of 1
+>>>>>>> d8fe19d618a045874c38c9de5383494657b89759
         </div>
         <span onClick={handleNextBoard}>
           <NextBoardIcon />
