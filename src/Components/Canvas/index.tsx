@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import { CanvasPropsT } from '../../Context/CanvasBoard/types';
+import React, { useRef, useEffect } from "react";
+import { CanvasPropsT } from "../../Context/CanvasBoard/types";
 
 const Canvas = ({ style }: CanvasPropsT) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -8,21 +8,33 @@ const Canvas = ({ style }: CanvasPropsT) => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const { width, height } = entry.contentRect;
+        if (canvas) {
+          canvas.width = width;
+          canvas.height = height;
+        }
+      }
+    });
+
     if (canvas) {
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext("2d");
       if (ctx) {
         contextRef.current = ctx;
       }
-      const canvasContainer = document.querySelector('.canvas-container');
+      const canvasContainer = document.querySelector(".canvas-container");
       if (canvasContainer) {
+        observer.observe(canvasContainer);
         canvas.width = canvasContainer?.clientWidth;
         canvas.height = canvasContainer?.clientHeight;
-        canvas.style.borderRadius = '1rem';
       }
     }
   }, []);
 
-  const startDrawing = ({ nativeEvent }: React.MouseEvent<HTMLCanvasElement>) => {
+  const startDrawing = ({
+    nativeEvent,
+  }: React.MouseEvent<HTMLCanvasElement>) => {
     const { offsetX, offsetY } = nativeEvent;
     if (contextRef.current) {
       contextRef.current.beginPath();
