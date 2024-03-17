@@ -1,0 +1,15 @@
+[role="tooltip"] {
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: attr(tooltipText);
+    @apply rounded-2xl bg-slate-300 p-4 absolute invisible;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+[role="tooltip"]::after {
+  visibility: attr(visibility);
+}

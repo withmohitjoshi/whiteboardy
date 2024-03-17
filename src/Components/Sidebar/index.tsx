@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useCanvasBoard } from "../../Context/CanvasBoard";
 import { useIcons } from "../../Hooks/useIcons";
 import Canvas from "../Canvas";
@@ -18,6 +19,18 @@ const Sidebar = () => {
     PencilIcon,
   } = useIcons();
   const { setCanvasArray } = useCanvasBoard();
+  useEffect(() => {
+    const tooltipContainer = document.querySelector(`[role="tooltip"]`);
+    if (tooltipContainer) {
+      const isVisible = tooltipContainer.getAttribute("visibility");
+      if (isVisible)
+        tooltipContainer.setAttribute(
+          "visibility",
+          isVisible === "visible" ? "hidden" : "visible"
+        );
+    }
+  }, []);
+
   return (
     <aside id="sidebar">
       <span title="Cursor">
@@ -32,9 +45,16 @@ const Sidebar = () => {
       <span title="Select pencil color">
         <ColorSelectIcon />
       </span>
-      <span title="Select board color">
-        <BoardColorSelectIcon />
-      </span>
+      <div
+        role="tooltip"
+        tooltipText="hye there"
+        position="top"
+        visibility="visible"
+      >
+        <span title="Select board color">
+          <BoardColorSelectIcon />
+        </span>
+      </div>
       <span title="Pencil">
         <PencilIcon />
       </span>
