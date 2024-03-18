@@ -1,6 +1,6 @@
 export const ReadFile = (
   file: Blob,
-  readAs: "arraybuffer" | "text" | "dataURL" = "dataURL"
+  readAs: "arraybuffer" | "text" | "dataURL" = "dataURL",
 ) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();

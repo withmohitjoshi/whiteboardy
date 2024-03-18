@@ -6,5 +6,5 @@ import CanvasBoardProvider from "./Context/CanvasBoard/index.tsx";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <CanvasBoardProvider>
     <App />
-  </CanvasBoardProvider>
+  </CanvasBoardProvider>,
 );

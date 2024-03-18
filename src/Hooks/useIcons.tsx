@@ -382,6 +382,6 @@ export const useIcons = () => {
     FirstBoardIcon,
     LastBoardIcon,
     PrevBoardIcon,
-    NextBoardIcon
+    NextBoardIcon,
   };
 };
