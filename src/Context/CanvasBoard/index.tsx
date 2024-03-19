@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import Canvas from "../../Components/Canvas";
+import { Canvas } from "../../Components";
 import { CanvasArrayT, CanvasBoardContextT } from "./types";
 
 const initialState: CanvasBoardContextT = {
@@ -31,5 +31,4 @@ export default function CanvasBoardProvider({
   );
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useCanvasBoard = () => useContext(CanvasBoard);

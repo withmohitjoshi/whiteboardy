@@ -1,4 +1,4 @@
-[role='tooltip'] {
+[role="tooltip"] {
   position: relative;
   display: inline-block;
 
@@ -7,34 +7,34 @@
     @apply rounded-2xl bg-slate-300 p-4 absolute invisible;
   }
 }
-[role='tooltip'][position='top'] {
+[role="tooltip"][position="top"] {
   &::after {
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
   }
 }
-[role='tooltip'][position='bottom'] {
+[role="tooltip"][position="bottom"] {
   &::after {
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
   }
 }
-[role='tooltip'][position='right'] {
+[role="tooltip"][position="right"] {
   &::after {
     top: 50%;
     left: 100%;
     transform: translateY(-50%);
   }
 }
-[role='tooltip'][position='left'] {
+[role="tooltip"][position="left"] {
   &::after {
     top: 50%;
     right: 100%;
     transform: translateY(-50%);
   }
 }
-[role='tooltip']:hover::after {
+[role="tooltip"]:hover::after {
   @apply visible;
 }
