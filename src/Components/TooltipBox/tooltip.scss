@@ -1,0 +1,58 @@
+.tooltip-container {
+  @apply relative inline-block;
+
+  .tooltip-text {
+    @apply invisible absolute p-2 rounded-md bg-slate-300 border-transparent;
+    &::after {
+      @apply absolute border-4;
+      content: "";
+    }
+    &[data-position="top"] {
+      bottom: 130%;
+      left: 50%;
+      transform: translateX(-50%);
+      &::after {
+        @apply border-t-slate-300;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    &[data-position="right"] {
+      top: 50%;
+      left: 130%;
+      transform: translateY(-50%);
+      &::after {
+        @apply border-r-slate-300;
+        top: 50%;
+        right: 100%;
+        transform: translateY(-50%);
+      }
+    }
+    &[data-position="bottom"] {
+      top: 130%;
+      left: 50%;
+      transform: translateX(-50%);
+      &::after {
+        @apply border-b-slate-300;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    &[data-position="left"] {
+      top: 50%;
+      right: 130%;
+      transform: translateY(-50%);
+      &::after {
+        @apply border-l-slate-300;
+        top: 50%;
+        left: 100%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+}

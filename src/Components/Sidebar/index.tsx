@@ -1,6 +1,8 @@
 import { useCanvasBoard } from "../../Context/CanvasBoard";
 import { useIcons } from "../../Hooks/useIcons";
 import Canvas from "../Canvas";
+import SelectColor from "../SelectColor";
+import TooltipBox from "../TooltipBox";
 
 const Sidebar = () => {
   const {
@@ -32,9 +34,11 @@ const Sidebar = () => {
       <span title="Select pencil color">
         <ColorSelectIcon />
       </span>
-      <span title="Select board color">
-        <BoardColorSelectIcon />
-      </span>
+      <TooltipBox RenderComponent={SelectColor}>
+        <span title="Select board color">
+          <BoardColorSelectIcon />
+        </span>
+      </TooltipBox>
       <span title="Pencil">
         <PencilIcon />
       </span>
