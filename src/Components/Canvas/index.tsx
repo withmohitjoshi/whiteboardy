@@ -22,13 +22,14 @@ const Canvas = ({ style }: CanvasPropsT) => {
     if (canvas) {
       const ctx = canvas.getContext("2d");
       if (ctx) {
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = "high";
+        ctx.lineWidth = 5;
         contextRef.current = ctx;
       }
       const canvasContainer = document.querySelector(".canvas-container");
       if (canvasContainer) {
         observer.observe(canvasContainer);
-        canvas.width = canvasContainer?.clientWidth;
-        canvas.height = canvasContainer?.clientHeight;
       }
     }
   }, []);

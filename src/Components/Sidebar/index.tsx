@@ -35,7 +35,7 @@ const Sidebar = () => {
         <ColorSelectIcon />
       </span>
       <TooltipBox RenderComponent={SelectCanvasBg}>
-        <span title="Select board color">
+        <span title="Change board background">
           <BoardColorSelectIcon />
         </span>
       </TooltipBox>
