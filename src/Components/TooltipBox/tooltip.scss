@@ -53,6 +53,8 @@
     }
   }
 }
-.tooltip-container:hover .tooltip-text {
-  visibility: visible;
+.tooltip-container:has(.show) {
+  .tooltip-text {
+    visibility: visible;
+  }
 }
