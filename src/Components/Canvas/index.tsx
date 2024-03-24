@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { CanvasPropsT } from "../../Context/CanvasBoard/types";
+import { getCanvasBg } from "../../Context/CanvasBoard/functions";
 
 const Canvas = ({ style }: CanvasPropsT) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -67,6 +68,7 @@ const Canvas = ({ style }: CanvasPropsT) => {
       onMouseUp={finishDrawing}
       style={{
         ...style,
+        backgroundColor: getCanvasBg(),
       }}
     />
   );
