@@ -9,8 +9,6 @@ export const getCanvasBg = (index?: number) => {
   if (index) {
     const activeCanvas = document.getElementsByTagName("canvas")[index];
     if (activeCanvas) {
-      console.dir(activeCanvas);
-
       return activeCanvas.style.backgroundColor;
     }
   }
