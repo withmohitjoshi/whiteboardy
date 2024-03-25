@@ -1,5 +1,5 @@
 export const getCanvasByIndex = (index: number) => {
-  const activeCanvas = document.getElementsByTagName("canvas")[index];
+  const activeCanvas = document.getElementsByTagName("canvas").item(index);
   if (activeCanvas) {
     return activeCanvas;
   }
@@ -47,5 +47,15 @@ export const rgbToHexa = (rgb: string) => {
     )}${componentToHex(parseInt(b, 10))}`;
   } else {
     return "#ffffff";
+  }
+};
+
+export const clearCanvas = (index: number) => {
+  const canvas = getCanvasByIndex(index);
+  if (canvas) {
+    const ctx = canvas.getContext("2d");
+    if (ctx) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
   }
 };

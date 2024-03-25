@@ -3,6 +3,7 @@ import { useCanvasBoard } from "./Context/CanvasBoard";
 
 function App() {
   const { canvasArray, activeBoard } = useCanvasBoard();
+
   return (
     <div id="app">
       <Header />

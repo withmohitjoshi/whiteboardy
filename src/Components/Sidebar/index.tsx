@@ -1,4 +1,5 @@
 import { useCanvasBoard } from "../../Context/CanvasBoard";
+import { clearCanvas, setCanvasBg } from "../../Context/CanvasBoard/functions";
 import { useIcons } from "../../Hooks/useIcons";
 import Canvas from "../Canvas";
 import SelectCanvasBg from "../SelectCanvasBg";
@@ -19,7 +20,7 @@ const Sidebar = () => {
     UndoIcon,
     PencilIcon,
   } = useIcons();
-  const { setCanvasArray } = useCanvasBoard();
+  const { setCanvasArray, activeBoard } = useCanvasBoard();
   return (
     <aside id="sidebar">
       <span title="Cursor">
@@ -60,7 +61,13 @@ const Sidebar = () => {
       <span title="Redo">
         <RedoIcon />
       </span>
-      <span title="Clear Board">
+      <span
+        title="Clear Board"
+        onClick={() => {
+          clearCanvas(activeBoard - 1);
+          setCanvasBg("#ffffff", activeBoard - 1);
+        }}
+      >
         <TrashIcon />
       </span>
     </aside>
