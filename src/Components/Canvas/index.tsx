@@ -68,7 +68,7 @@ const Canvas = ({ style }: CanvasPropsT) => {
       onMouseUp={finishDrawing}
       style={{
         ...style,
-        backgroundColor: "#ffffff",
+        backgroundColor: "#fff",
       }}
     />
   );

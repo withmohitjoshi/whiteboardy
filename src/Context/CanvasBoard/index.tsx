@@ -17,6 +17,7 @@ export default function CanvasBoardProvider({
 }) {
   const [activeBoard, setActiveBoard] = useState<number>(1);
   const [canvasArray, setCanvasArray] = useState<CanvasArrayT>([Canvas]);
+
   return (
     <CanvasBoard.Provider
       value={{

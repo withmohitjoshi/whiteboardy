@@ -1,6 +1,7 @@
 const colors = ["#ff0000", "#ffffff", "#000000", "#008000", "#ffff00"];
 
 const SelectCanvasBg = () => {
+
   return (
     <div className="flex flex-col gap-4">
       {colors.map((color, index) => {
@@ -15,7 +16,10 @@ const SelectCanvasBg = () => {
         );
       })}
       <div>
-        <input type="color" className="w-6 h-6 p-1" />
+        <input
+          type="color"
+          className="w-6 h-6 p-1"
+        />
       </div>
     </div>
   );
