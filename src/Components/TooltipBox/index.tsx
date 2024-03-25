@@ -23,12 +23,11 @@ const TooltipBox: React.FC<TooltipBoxT> = ({
   });
   return (
     <div className="tooltip-container cursor-pointer" ref={ref}>
-      <span
-        className={`tooltip-text ${show ? "show" : ""}`}
-        data-position={position}
-      >
-        <RenderComponent />
-      </span>
+      {show && (
+        <span className={`tooltip-text show`} data-position={position}>
+          <RenderComponent />
+        </span>
+      )}
       <span
         className="tooltip-trigger"
         onClick={() => setShow((prev) => !prev)}
