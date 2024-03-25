@@ -1,4 +1,4 @@
-export const ReadFile = (
+export const readFile = (
   file: Blob,
   readAs: "arraybuffer" | "text" | "dataURL" = "dataURL",
 ) => {

@@ -50,10 +50,14 @@ export const rgbToHexa = (rgb: string) => {
   }
 };
 
+export const getCTX = (canvas: HTMLCanvasElement) => {
+  return canvas.getContext("2d");
+};
+
 export const clearCanvas = (index: number) => {
   const canvas = getCanvasByIndex(index);
   if (canvas) {
-    const ctx = canvas.getContext("2d");
+    const ctx = getCTX(canvas);
     if (ctx) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }

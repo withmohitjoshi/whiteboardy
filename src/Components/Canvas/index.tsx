@@ -32,6 +32,11 @@ const Canvas = ({ style }: CanvasPropsT) => {
         observer.observe(canvasContainer);
       }
     }
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+    };
   }, []);
 
   const startDrawing = ({
