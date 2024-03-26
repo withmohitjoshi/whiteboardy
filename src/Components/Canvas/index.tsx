@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { CanvasPropsT } from '../../Context/CanvasBoard/types';
-import { hexaToRGB } from '../../Context/CanvasBoard/functions';
+import { getCTX, hexaToRGB } from '../../Context/CanvasBoard/functions';
 
 const Canvas = ({ style }: CanvasPropsT) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -11,10 +11,14 @@ const Canvas = ({ style }: CanvasPropsT) => {
     const canvas = canvasRef.current;
 
     if (canvas) {
-      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.parentElement!.offsetWidth;
+      canvas.height = canvas.parentElement!.offsetHeight;
+      const ctx = getCTX(canvas);
       if (ctx) {
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality = 'high';
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
         contextRef.current = ctx;
       }
     }
@@ -51,6 +55,7 @@ const Canvas = ({ style }: CanvasPropsT) => {
       onMouseDown={startDrawing}
       onMouseMove={drawPencil}
       onMouseUp={finishDrawing}
+      className='w-full h-full'
       style={{
         ...style,
         backgroundColor: hexaToRGB('#ffffff'),
