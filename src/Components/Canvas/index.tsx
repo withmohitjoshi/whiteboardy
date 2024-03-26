@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from "react";
-import { CanvasPropsT } from "../../Context/CanvasBoard/types";
-import { hexaToRGB } from "../../Context/CanvasBoard/functions";
+import React, { useRef, useEffect } from 'react';
+import { CanvasPropsT } from '../../Context/CanvasBoard/types';
+import { hexaToRGB } from '../../Context/CanvasBoard/functions';
 
 const Canvas = ({ style }: CanvasPropsT) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -9,39 +9,18 @@ const Canvas = ({ style }: CanvasPropsT) => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const observer = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        const { width, height } = entry.contentRect;
-        if (canvas) {
-          canvas.width = width;
-          canvas.height = height;
-        }
-      }
-    });
 
     if (canvas) {
-      const ctx = canvas.getContext("2d");
+      const ctx = canvas.getContext('2d');
       if (ctx) {
         ctx.imageSmoothingEnabled = true;
-        ctx.imageSmoothingQuality = "high";
-        ctx.lineWidth = 5;
+        ctx.imageSmoothingQuality = 'high';
         contextRef.current = ctx;
       }
-      const canvasContainer = document.querySelector(".canvas-container");
-      if (canvasContainer) {
-        observer.observe(canvasContainer);
-      }
     }
-    return () => {
-      if (observer) {
-        observer.disconnect();
-      }
-    };
   }, []);
 
-  const startDrawing = ({
-    nativeEvent,
-  }: React.MouseEvent<HTMLCanvasElement>) => {
+  const startDrawing = ({ nativeEvent }: React.MouseEvent<HTMLCanvasElement>) => {
     const { offsetX, offsetY } = nativeEvent;
     if (contextRef.current) {
       contextRef.current.beginPath();
@@ -74,7 +53,7 @@ const Canvas = ({ style }: CanvasPropsT) => {
       onMouseUp={finishDrawing}
       style={{
         ...style,
-        backgroundColor: hexaToRGB("#ffffff"),
+        backgroundColor: hexaToRGB('#ffffff'),
       }}
     />
   );
