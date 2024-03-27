@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from 'react';
-import { CanvasPropsT } from '../../Context/CanvasBoard/types';
-import { getCTX, hexaToRGB } from '../../Context/CanvasBoard/functions';
+import React, { useRef, useEffect } from "react";
+import { CanvasPropsT } from "../../Context/CanvasBoard/types";
+import { getCTX, hexaToRGB } from "../../Context/CanvasBoard/functions";
 
 const Canvas = ({ style }: CanvasPropsT) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -10,21 +10,40 @@ const Canvas = ({ style }: CanvasPropsT) => {
   useEffect(() => {
     const canvas = canvasRef.current;
 
+    const main = document.getElementById("main");
+
+    const observer = new ResizeObserver(() => {
+      if (main) {
+        const sidebarWidth = (main.children[0] as HTMLElement).offsetWidth;
+        const gap = parseInt(getComputedStyle(main)["gap"]);
+        const width = main.offsetWidth - sidebarWidth - gap;
+        const height = main.offsetHeight;
+
+        if (canvas) {
+          canvas.width = width;
+          canvas.height = canvas.parentElement!.offsetHeight;
+        }
+      }
+    });
+
     if (canvas) {
-      canvas.width = canvas.parentElement!.offsetWidth;
-      canvas.height = canvas.parentElement!.offsetHeight;
       const ctx = getCTX(canvas);
       if (ctx) {
         ctx.imageSmoothingEnabled = true;
-        ctx.imageSmoothingQuality = 'high';
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
+        ctx.imageSmoothingQuality = "high";
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
         contextRef.current = ctx;
       }
     }
+
+    if (main) observer.observe(main);
+    return () => observer.disconnect();
   }, []);
 
-  const startDrawing = ({ nativeEvent }: React.MouseEvent<HTMLCanvasElement>) => {
+  const startDrawing = ({
+    nativeEvent,
+  }: React.MouseEvent<HTMLCanvasElement>) => {
     const { offsetX, offsetY } = nativeEvent;
     if (contextRef.current) {
       contextRef.current.beginPath();
@@ -55,10 +74,9 @@ const Canvas = ({ style }: CanvasPropsT) => {
       onMouseDown={startDrawing}
       onMouseMove={drawPencil}
       onMouseUp={finishDrawing}
-      className='w-full h-full'
       style={{
         ...style,
-        backgroundColor: hexaToRGB('#ffffff'),
+        backgroundColor: hexaToRGB("#ffffff"),
       }}
     />
   );
