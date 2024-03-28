@@ -9,16 +9,17 @@ const Canvas = ({ style }: CanvasPropsT) => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-
+    const app = document.getElementById('app');
     const main = document.getElementById('main');
+    const header = document.getElementById('header');
 
     const observer = new ResizeObserver(() => {
-      if (main) {
-        const { top, bottom } = main.getBoundingClientRect();
+      if (app && main && header) {
         const sidebarWidth = (main.children[0] as HTMLElement).offsetWidth;
-        const gap = parseInt(getComputedStyle(main)['gap']);
-        const canvasWidth = main.offsetWidth - sidebarWidth - gap;
-        const canvasHeight = bottom - top;
+        const mainGap = parseInt(getComputedStyle(main)['gap']);
+        const appGap = parseInt(getComputedStyle(app)['gap']);
+        const canvasWidth = main.offsetWidth - sidebarWidth - mainGap;
+        const canvasHeight = main.offsetHeight - header.offsetHeight - appGap;
         if (canvas) {
           canvas.width = canvasWidth;
           canvas.height = canvasHeight;
