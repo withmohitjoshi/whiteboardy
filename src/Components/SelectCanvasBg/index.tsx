@@ -32,7 +32,7 @@ const SelectCanvasBg = () => {
         const ctx = getCTX(canvas);
         if (ctx) {
           image.src = URL.createObjectURL(selectedFile);
-          image.onload = () => ctx?.drawImage(image, 10, 10);
+          image.onload = () => ctx?.drawImage(image, 0, 0);
         }
       }
     }
@@ -68,9 +68,7 @@ const SelectCanvasBg = () => {
       </div>
       <div
         title="Select image as background"
-        onClick={() => {
-          selectImageRef.current?.click();
-        }}
+        onClick={() => selectImageRef.current?.click()}
       >
         <UploadIcon />
         <input

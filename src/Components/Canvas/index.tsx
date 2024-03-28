@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from 'react';
-import { CanvasPropsT } from '../../Context/CanvasBoard/types';
-import { getCTX, hexaToRGB } from '../../Context/CanvasBoard/functions';
+import React, { useRef, useEffect } from "react";
+import { CanvasPropsT } from "../../Context/CanvasBoard/types";
+import { getCTX, hexaToRGB } from "../../Context/CanvasBoard/functions";
 
 const Canvas = ({ style }: CanvasPropsT) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -9,23 +9,30 @@ const Canvas = ({ style }: CanvasPropsT) => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const app = document.getElementById('app');
-    const main = document.getElementById('main');
-    const header = document.getElementById('header');
+    const app = document.getElementById("app");
+    const main = document.getElementById("main");
+    const header = document.getElementById("header");
 
     const observer = new ResizeObserver(() => {
       if (app && main && header) {
         const sidebarWidth = (main.children[0] as HTMLElement).offsetWidth;
-        const mainGap = parseInt(getComputedStyle(main)['gap']);
-        const appGap = parseInt(getComputedStyle(app)['gap']);
+        const mainGap = parseInt(getComputedStyle(main)["gap"]);
+        const appGap = parseInt(getComputedStyle(app)["gap"]);
         const canvasWidth = main.offsetWidth - sidebarWidth - mainGap;
         const canvasHeight = main.offsetHeight - header.offsetHeight - appGap;
         if (canvas) {
-          // const ctx = getCTX(canvas);
-          // const imageData = ctx!.getImageData(0, 0, canvas.width, canvas.height);
-          canvas.width = canvasWidth;
-          canvas.height = canvasHeight;
-          // ctx!.putImageData(imageData, 0, 0);
+          const ctx = getCTX(canvas);
+          if (ctx) {
+            const imageData = ctx.getImageData(
+              0,
+              0,
+              canvas.width,
+              canvas.height
+            );
+            canvas.width = canvasWidth;
+            canvas.height = canvasHeight;
+            ctx.putImageData(imageData, 0, 0);
+          }
         }
       }
     });
@@ -34,9 +41,9 @@ const Canvas = ({ style }: CanvasPropsT) => {
       const ctx = getCTX(canvas);
       if (ctx) {
         ctx.imageSmoothingEnabled = true;
-        ctx.imageSmoothingQuality = 'high';
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
+        ctx.imageSmoothingQuality = "high";
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
         contextRef.current = ctx;
       }
     }
@@ -45,7 +52,9 @@ const Canvas = ({ style }: CanvasPropsT) => {
     return () => observer.disconnect();
   }, []);
 
-  const startDrawing = ({ nativeEvent }: React.MouseEvent<HTMLCanvasElement>) => {
+  const startDrawing = ({
+    nativeEvent,
+  }: React.MouseEvent<HTMLCanvasElement>) => {
     const { offsetX, offsetY } = nativeEvent;
     if (contextRef.current) {
       contextRef.current.beginPath();
@@ -78,7 +87,7 @@ const Canvas = ({ style }: CanvasPropsT) => {
       onMouseUp={finishDrawing}
       style={{
         ...style,
-        backgroundColor: hexaToRGB('#ffffff'),
+        backgroundColor: hexaToRGB("#000000"),
       }}
     />
   );
