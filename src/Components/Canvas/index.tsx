@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from "react";
-import { CanvasPropsT } from "../../Context/CanvasBoard/types";
-import { getCTX, hexaToRGB } from "../../Context/CanvasBoard/functions";
+import React, { useRef, useEffect } from 'react';
+import { CanvasPropsT } from '../../Context/CanvasBoard/types';
+import { getCTX, hexaToRGB } from '../../Context/CanvasBoard/functions';
 
 const Canvas = ({ style }: CanvasPropsT) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -10,18 +10,18 @@ const Canvas = ({ style }: CanvasPropsT) => {
   useEffect(() => {
     const canvas = canvasRef.current;
 
-    const main = document.getElementById("main");
+    const main = document.getElementById('main');
 
     const observer = new ResizeObserver(() => {
       if (main) {
+        const { top, bottom } = main.getBoundingClientRect();
         const sidebarWidth = (main.children[0] as HTMLElement).offsetWidth;
-        const gap = parseInt(getComputedStyle(main)["gap"]);
-        const width = main.offsetWidth - sidebarWidth - gap;
-        const height = main.offsetHeight;
-
+        const gap = parseInt(getComputedStyle(main)['gap']);
+        const canvasWidth = main.offsetWidth - sidebarWidth - gap;
+        const canvasHeight = bottom - top;
         if (canvas) {
-          canvas.width = width;
-          canvas.height = canvas.parentElement!.offsetHeight;
+          canvas.width = canvasWidth;
+          canvas.height = canvasHeight;
         }
       }
     });
@@ -30,9 +30,9 @@ const Canvas = ({ style }: CanvasPropsT) => {
       const ctx = getCTX(canvas);
       if (ctx) {
         ctx.imageSmoothingEnabled = true;
-        ctx.imageSmoothingQuality = "high";
-        ctx.lineCap = "round";
-        ctx.lineJoin = "round";
+        ctx.imageSmoothingQuality = 'high';
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
         contextRef.current = ctx;
       }
     }
@@ -41,9 +41,7 @@ const Canvas = ({ style }: CanvasPropsT) => {
     return () => observer.disconnect();
   }, []);
 
-  const startDrawing = ({
-    nativeEvent,
-  }: React.MouseEvent<HTMLCanvasElement>) => {
+  const startDrawing = ({ nativeEvent }: React.MouseEvent<HTMLCanvasElement>) => {
     const { offsetX, offsetY } = nativeEvent;
     if (contextRef.current) {
       contextRef.current.beginPath();
@@ -76,7 +74,7 @@ const Canvas = ({ style }: CanvasPropsT) => {
       onMouseUp={finishDrawing}
       style={{
         ...style,
-        backgroundColor: hexaToRGB("#ffffff"),
+        backgroundColor: hexaToRGB('#ffffff'),
       }}
     />
   );
