@@ -21,8 +21,11 @@ const Canvas = ({ style }: CanvasPropsT) => {
         const canvasWidth = main.offsetWidth - sidebarWidth - mainGap;
         const canvasHeight = main.offsetHeight - header.offsetHeight - appGap;
         if (canvas) {
+          // const ctx = getCTX(canvas);
+          // const imageData = ctx!.getImageData(0, 0, canvas.width, canvas.height);
           canvas.width = canvasWidth;
           canvas.height = canvasHeight;
+          // ctx!.putImageData(imageData, 0, 0);
         }
       }
     });
