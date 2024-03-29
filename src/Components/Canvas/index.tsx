@@ -2,6 +2,8 @@ import React, { useRef, useEffect } from "react";
 import { CanvasPropsT } from "../../Context/CanvasBoard/types";
 import { getCTX, hexaToRGB } from "../../Context/CanvasBoard/functions";
 
+// const drawings: Path2D[] = [];
+
 const Canvas = ({ style }: CanvasPropsT) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const contextRef = useRef<CanvasRenderingContext2D | null>(null);
@@ -35,7 +37,9 @@ const Canvas = ({ style }: CanvasPropsT) => {
         const canvasWidth = main.offsetWidth - sidebarWidth - mainGap;
         const canvasHeight =
           app.offsetHeight - header.offsetHeight - appGap - verticalPadding * 2;
-        if (canvas) {
+
+        const ctx = getCTX(canvas!);
+        if (canvas && ctx) {
           canvas.width = canvasWidth;
           canvas.height = canvasHeight;
         }
