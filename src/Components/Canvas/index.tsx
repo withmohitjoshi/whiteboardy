@@ -13,30 +13,6 @@ const Canvas = ({ style }: CanvasPropsT) => {
     const main = document.getElementById("main");
     const header = document.getElementById("header");
 
-    const observer = new ResizeObserver(() => {
-      if (app && main && header) {
-        const sidebarWidth = (main.children[0] as HTMLElement).offsetWidth;
-        const mainGap = parseInt(getComputedStyle(main)["gap"]);
-        const appGap = parseInt(getComputedStyle(app)["gap"]);
-        const canvasWidth = main.offsetWidth - sidebarWidth - mainGap;
-        const canvasHeight = main.offsetHeight - header.offsetHeight - appGap;
-        if (canvas) {
-          const ctx = getCTX(canvas);
-          if (ctx) {
-            const imageData = ctx.getImageData(
-              0,
-              0,
-              canvas.width,
-              canvas.height
-            );
-            canvas.width = canvasWidth;
-            canvas.height = canvasHeight;
-            ctx.putImageData(imageData, 0, 0);
-          }
-        }
-      }
-    });
-
     if (canvas) {
       const ctx = getCTX(canvas);
       if (ctx) {
@@ -47,6 +23,24 @@ const Canvas = ({ style }: CanvasPropsT) => {
         contextRef.current = ctx;
       }
     }
+
+    const observer = new ResizeObserver(() => {
+      if (app && main && header) {
+        const sidebarWidth = (main.children[0] as HTMLElement).offsetWidth;
+        const mainGap = parseInt(getComputedStyle(main)["gap"]);
+        const appGap = parseInt(getComputedStyle(app)["gap"]);
+        const verticalPadding = parseInt(
+          getComputedStyle(app)["paddingInline"]
+        );
+        const canvasWidth = main.offsetWidth - sidebarWidth - mainGap;
+        const canvasHeight =
+          app.offsetHeight - header.offsetHeight - appGap - verticalPadding * 2;
+        if (canvas) {
+          canvas.width = canvasWidth;
+          canvas.height = canvasHeight;
+        }
+      }
+    });
 
     if (main) observer.observe(main);
     return () => observer.disconnect();
@@ -87,7 +81,7 @@ const Canvas = ({ style }: CanvasPropsT) => {
       onMouseUp={finishDrawing}
       style={{
         ...style,
-        backgroundColor: hexaToRGB("#000000"),
+        backgroundColor: hexaToRGB("#ff0000"),
       }}
     />
   );
