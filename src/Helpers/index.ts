@@ -1,6 +1,6 @@
 export const readFile = (
   file: Blob,
-  readAs: "arraybuffer" | "text" | "dataURL" = "dataURL",
+  readAs: "arraybuffer" | "text" | "dataURL" = "dataURL"
 ) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -27,4 +27,18 @@ export const readFile = (
         break;
     }
   });
+};
+
+export const calculateCanvasDimensions = () => {
+  const app = document.getElementById("app")!;
+  const main = document.getElementById("main")!;
+  const header = document.getElementById("header")!;
+  const sidebarWidth = (main.children[0] as HTMLElement).offsetWidth;
+  const mainGap = parseInt(getComputedStyle(main)["gap"]);
+  const appGap = parseInt(getComputedStyle(app)["gap"]);
+  const verticalPadding = parseInt(getComputedStyle(app)["paddingInline"]);
+  const canvasWidth = main.offsetWidth - sidebarWidth - mainGap;
+  const canvasHeight =
+    app.offsetHeight - header.offsetHeight - appGap - verticalPadding * 2;
+  return { canvasWidth, canvasHeight };
 };

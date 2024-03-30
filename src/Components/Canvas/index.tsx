@@ -1,8 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { CanvasPropsT } from "../../Context/CanvasBoard/types";
 import { getCTX, hexaToRGB } from "../../Context/CanvasBoard/functions";
-
-// const drawings: Path2D[] = [];
+import { calculateCanvasDimensions } from "../../Helpers";
 
 const Canvas = ({ style }: CanvasPropsT) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -11,9 +10,7 @@ const Canvas = ({ style }: CanvasPropsT) => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const app = document.getElementById("app");
     const main = document.getElementById("main");
-    const header = document.getElementById("header");
 
     if (canvas) {
       const ctx = getCTX(canvas);
@@ -27,22 +24,11 @@ const Canvas = ({ style }: CanvasPropsT) => {
     }
 
     const observer = new ResizeObserver(() => {
-      if (app && main && header) {
-        const sidebarWidth = (main.children[0] as HTMLElement).offsetWidth;
-        const mainGap = parseInt(getComputedStyle(main)["gap"]);
-        const appGap = parseInt(getComputedStyle(app)["gap"]);
-        const verticalPadding = parseInt(
-          getComputedStyle(app)["paddingInline"]
-        );
-        const canvasWidth = main.offsetWidth - sidebarWidth - mainGap;
-        const canvasHeight =
-          app.offsetHeight - header.offsetHeight - appGap - verticalPadding * 2;
-
-        const ctx = getCTX(canvas!);
-        if (canvas && ctx) {
-          canvas.width = canvasWidth;
-          canvas.height = canvasHeight;
-        }
+      const { canvasWidth, canvasHeight } = calculateCanvasDimensions();
+      const ctx = getCTX(canvas!);
+      if (canvas && ctx) {
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
       }
     });
 
