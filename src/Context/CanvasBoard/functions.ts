@@ -31,9 +31,7 @@ export const setCanvasPencilColor = (color: string, index: number) => {
     if (activeCanvas) {
       const ctx = getCTX(activeCanvas);
       if (ctx) {
-        console.log({ ctx });
         ctx.strokeStyle = color;
-        console.log({ ctx });
       }
     }
   }

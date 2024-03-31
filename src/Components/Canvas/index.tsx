@@ -19,6 +19,7 @@ const Canvas = ({ style }: CanvasPropsT) => {
         ctx.imageSmoothingQuality = "high";
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
+        ctx.lineWidth = 5;
         contextRef.current = ctx;
       }
     }
