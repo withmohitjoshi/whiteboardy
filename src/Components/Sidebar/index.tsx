@@ -3,6 +3,7 @@ import { clearCanvas, setCanvasBg } from "../../Context/CanvasBoard/functions";
 import { useIcons } from "../../Hooks/useIcons";
 import Canvas from "../Canvas";
 import SelectCanvasBg from "../SelectCanvasBg";
+import SelectPencilColor from "../SelectPencilColor";
 import TooltipBox from "../TooltipBox";
 
 const Sidebar = () => {
@@ -32,9 +33,11 @@ const Sidebar = () => {
       >
         <BoardLayerIcon />
       </span>
-      <span title="Select pencil color">
-        <ColorSelectIcon />
-      </span>
+      <TooltipBox RenderComponent={SelectPencilColor}>
+        <span title="Select pencil color">
+          <ColorSelectIcon />
+        </span>
+      </TooltipBox>
       <TooltipBox RenderComponent={SelectCanvasBg}>
         <span title="Change board background">
           <BoardColorSelectIcon />

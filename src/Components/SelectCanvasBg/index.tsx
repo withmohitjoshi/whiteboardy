@@ -9,7 +9,14 @@ import {
 } from "../../Context/CanvasBoard/functions";
 import { useIcons } from "../../Hooks/useIcons";
 
-const colors = ["#ff0000", "#ffffff", "#000000", "#008000", "#ffff00"];
+const colors = [
+  "#ff0000",
+  "#ffffff",
+  "#000000",
+  "#ffffff",
+  "#008000",
+  "#ffff00",
+];
 
 const SelectCanvasBg = () => {
   const selectImageRef = useRef<HTMLInputElement | null>(null);
